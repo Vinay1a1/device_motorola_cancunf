@@ -1994,7 +1994,6 @@ vendor/lib/hw/mt6855/android.hardware.graphics.mapper@4.0-impl-mediatek.so;SYMLI
 vendor/lib/hw/mt6855/gralloc.rogue.so;SYMLINK=vendor/lib/hw/gralloc.rogue.so
 vendor/lib/hw/mt6855/vendor.mediatek.hardware.pq@2.15-impl.so;SYMLINK=vendor/lib/hw/vendor.mediatek.hardware.pq@2.15-impl.so
 vendor/lib/hw/mt6855/vulkan.mtk.so;SYMLINK=vendor/lib/hw/vulkan.mtk.so
-vendor/lib/hw/displaypanel.default.so
 vendor/lib/mt6855/libIMGegl.so;SYMLINK=vendor/lib/libIMGegl.so
 vendor/lib/mt6855/libPVRMtkutils.so;SYMLINK=vendor/lib/libPVRMtkutils.so
 vendor/lib/mt6855/libPVROCL.so;SYMLINK=vendor/lib/libPVROCL.so
@@ -2043,7 +2042,6 @@ vendor/lib64/hw/mt6855/android.hardware.graphics.mapper@4.0-impl-mediatek.so;SYM
 vendor/lib64/hw/mt6855/gralloc.rogue.so;SYMLINK=vendor/lib64/hw/gralloc.rogue.so
 vendor/lib64/hw/mt6855/vendor.mediatek.hardware.pq@2.15-impl.so;SYMLINK=vendor/lib64/hw/vendor.mediatek.hardware.pq@2.15-impl.so
 vendor/lib64/hw/mt6855/vulkan.mtk.so;SYMLINK=vendor/lib64/hw/vulkan.mtk.so
-vendor/lib64/hw/displaypanel.default.so
 vendor/lib64/hw/hwcomposer.mtk_common.so
 vendor/lib64/mt6855/libIMGegl.so;SYMLINK=vendor/lib64/libIMGegl.so
 vendor/lib64/mt6855/libPVRMtkutils.so;SYMLINK=vendor/lib64/libPVRMtkutils.so
