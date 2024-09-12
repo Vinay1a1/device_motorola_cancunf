@@ -2335,10 +2335,6 @@ vendor/bin/volte_rcs_ua
 vendor/etc/init/init.vtservice_hidl.rc
 vendor/etc/init/lbs_hidl_service.rc
 vendor/etc/init/volte_clientapi_ua.rc
-vendor/lib/hw/vendor.mediatek.hardware.videotelephony@1.0-impl.so
-vendor/lib/libmtkspparser.so
-vendor/lib/libmtkspparser_swb.so
-vendor/lib/libmtksysutils.so
 vendor/lib/vendor.mediatek.hardware.mmagent@1.0.so
 vendor/lib/vendor.mediatek.hardware.mmagent@1.1.so
 vendor/lib64/hw/vendor.mediatek.hardware.videotelephony@1.0-impl.so
