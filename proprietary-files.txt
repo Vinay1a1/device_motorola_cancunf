@@ -2374,7 +2374,6 @@ vendor/bin/hw/tetheroffloadservice
 vendor/etc/init/tetheroffloadservice.rc
 
 # Media
-vendor/bin/hw/android.hardware.media.c2@1.2-mediatek
 vendor/bin/hw/android.hardware.media.c2@1.2-mediatek-64b
 vendor/bin/mt6855/jpegtool;SYMLINK=vendor/bin/jpegtool
 vendor/bin/mt6855/v3avpud.mt6855;SYMLINK=vendor/bin/v3avpud
