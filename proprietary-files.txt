@@ -2516,7 +2516,6 @@ vendor/lib/libiqi_bridge.so
 vendor/lib/liblog_vendor.so
 vendor/lib/libminiui.so
 vendor/lib/liboem_specific.so
-vendor/lib/libpkip.so
 vendor/lib/libscltm.so
 vendor/lib64/mt6855/libDR.so;SYMLINK=vendor/lib64/libDR.so
 vendor/lib64/mt6855/libacdk.so;SYMLINK=vendor/lib64/libacdk.so
