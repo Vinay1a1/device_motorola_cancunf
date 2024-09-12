@@ -18,6 +18,8 @@ ANDROID_ROOT="${MY_DIR}/../../.."
 
 export TARGET_ENABLE_CHECKELF=true
 
+export PATCHELF_VERSION=0_17_2
+
 HELPER="${ANDROID_ROOT}/tools/extract-utils/extract_utils.sh"
 if [ ! -f "${HELPER}" ]; then
     echo "Unable to find helper script at ${HELPER}"
@@ -79,7 +81,8 @@ function blob_fixup {
         vendor/lib*/hw/mt6855/vendor.mediatek.hardware.pq@2.15-impl.so \
         |vendor/lib64/mt6855/libmtkcam_stdutils.so \
         |vendor/lib64/hw/mt6855/android.hardware.camera.provider@2.6-impl-mediatek.so \
-        |vendor/lib64/hw/android.hardware.thermal@2.0-impl.so)
+        |vendor/lib64/hw/android.hardware.thermal@2.0-impl.so \
+        |vendor/lib64/sensors.moto.so)
             "${PATCHELF}" --replace-needed "libutils.so" "libutils-v32.so" "${2}"
             ;;
         vendor/lib*/hw/audio.primary.mediatek.so)
@@ -93,10 +96,6 @@ function blob_fixup {
         |vendor/lib64/mt6855/libcam.utils.sensorprovider.so)
             [ "$2" = "" ] && return 0
             grep -q "libshim_sensors.so" "$2" || "$PATCHELF" --add-needed "libshim_sensors.so" "$2"
-            ;;
-        vendor/lib64/libwifi-hal-mtk.so)
-            [ "$2" = "" ] && return 0
-            "${PATCHELF}" --set-soname "libwifi-hal-mtk.so" "${2}"
             ;;
         vendor/lib64/libdlbdsservice.so \
         |vendor/lib64/libcodec2_soft_ddpdec.so \
@@ -121,10 +120,6 @@ function blob_fixup {
             [ "$2" = "" ] && return 0
             sed -i '/vts/Q' "$2"
             ;;
-        vendor/lib64/sensors.moto.so)
-            [ "$2" = "" ] && return 0
-            "${PATCHELF}" --replace-needed "libutils.so" "libutils-v32.so" "${2}"
-            ;;
         system_ext/lib64/libsource.so)
             [ "$2" = "" ] && return 0
             grep -q libui_shim.so "$2" || "$PATCHELF" --add-needed libui_shim.so "$2"
@@ -137,6 +132,26 @@ function blob_fixup {
         vendor/bin/hw/android.hardware.memtrack-service.mediatek)
             [ "$2" = "" ] && return 0
             "${PATCHELF}" --replace-needed "android.hardware.memtrack-V1-ndk_platform.so" "android.hardware.memtrack-V1-ndk.so" "${2}"
+            ;;
+        vendor/lib64/mt6855/lib3a.flash.so \
+        |vendor/lib64/mt6855/lib3a.ae.stat.so \
+        |vendor/lib64/mt6855/lib3a.sensors.flicker.so \
+        |vendor/lib64/mt6855/lib3a.sensors.color.so \
+        |vendor/lib64/mt6855/libaaa_ltm.so \
+        |vendor/lib64/libSQLiteModule_VER_ALL.so)
+            [ "$2" = "" ] && return 0
+            "${PATCHELF}" --add-needed "liblog.so" "${2}"
+            ;;
+        vendor/lib64/mt6855/libmnl.so)
+            [ "$2" = "" ] && return 0
+            "${PATCHELF}" --add-needed "libcutils.so" "${2}"
+            ;;
+        vendor/lib64/libalsautils-v31.so \
+        |vendor/lib64/libwifi-hal-mtk.so \
+        |vendor/lib64/libnir_neon_driver_ndk.mtk.vndk.so \
+        |vendor/lib64/libspeech_enh_lib.so)
+            [ "$2" = "" ] && return 0
+            "${PATCHELF}" --set-soname "$(basename "${1}")" "${2}"
             ;;
         *)
             return 1
