@@ -25,6 +25,14 @@ if [ ! -f "${HELPER}" ]; then
 fi
 source "${HELPER}"
 
+function vendor_imports() {
+	cat <<EOF >>"$1"
+		"device/motorola/cancunf",
+		"hardware/mediatek",
+		"hardware/mediatek/libmtkperf_client"
+EOF
+}
+
 function lib_to_package_fixup_vendor_variants() {
     if [ "$2" != "vendor" ]; then
         return 1
